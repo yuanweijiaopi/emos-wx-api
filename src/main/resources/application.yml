@@ -38,7 +38,11 @@ spring:
       test-while-idle: true
       test-on-borrow: false
       test-on-return: false
-
+  devtools:
+      restart:
+        enabled: true
+        additional-paths: src/main/java
+        additional-exclude: static
 
 
   redis:
