@@ -3,17 +3,13 @@ package com.example.emos.wx.db.mapper;
 import com.example.emos.wx.db.pojo.TbUser;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
+
 @Repository
 public interface TbUsermapper {
-    int deleteByPrimaryKey(Integer id);
+    boolean havaRootUser();
 
-    int insert(TbUser record);
+    int insert(HashMap param);
 
-    int insertSelective(TbUser record);
-
-    TbUser selectByPrimaryKey(Integer id);
-
-    int updateByPrimaryKeySelective(TbUser record);
-
-    int updateByPrimaryKey(TbUser record);
+    Integer searchIdByOpenId(String openId);
 }

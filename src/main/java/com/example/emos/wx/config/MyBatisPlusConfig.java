@@ -1,5 +1,6 @@
 package com.example.emos.wx.config;
 
+import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
@@ -21,8 +22,6 @@ public class MyBatisPlusConfig {
      *
      * @return
      */
-
-
     @Bean
     public MybatisPlusInterceptor mybatisPlusInterceptor() {
         MybatisPlusInterceptor mybatisPlusInterceptor = new MybatisPlusInterceptor();

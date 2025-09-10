@@ -65,10 +65,7 @@ public class OAuth2Filter extends AuthenticatingFilter {
     @Override
     protected boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue) {
         HttpServletRequest req = (HttpServletRequest) request;
-        if (req.getMethod().equals(RequestMethod.OPTIONS.name())){
-            return true;
-        }
-        return false;
+        return req.getMethod().equals(RequestMethod.OPTIONS.name());
     }
 
     @Override
