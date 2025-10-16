@@ -1,8 +1,8 @@
 package com.example.emos.wx.controller.form;
 
-import com.example.emos.wx.db.pojo.Life;
-import com.example.emos.wx.db.pojo.Student;
-import com.example.emos.wx.db.pojo.Teacher;
+import com.example.emos.wx.entity.pojo.Life;
+import com.example.emos.wx.entity.pojo.Student;
+import com.example.emos.wx.entity.pojo.Teacher;
 import org.springframework.beans.BeanUtils;
 
 import java.util.UUID;

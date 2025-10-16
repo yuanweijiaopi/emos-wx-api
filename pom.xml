@@ -13,6 +13,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <spring-boot.version>2.6.13</spring-boot.version>
+        <mybatis-generator.version>1.4.0</mybatis-generator.version>
+        <javaparser.version>3.9.1</javaparser.version>
+        <base-mybatis-plugin.version>1.0.0-SNAPSHOT</base-mybatis-plugin.version>
     </properties>
 
     <dependencies>
@@ -247,6 +250,33 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>${mybatis-generator.version}</version>
+                <configuration>
+                    <configurationFile>src/main/resources/mybatis/generatorConfig.xml</configurationFile>
+                    <verbose>true</verbose>
+                    <overwrite>true</overwrite>
+                </configuration>
+                <dependencies>
+                    <!-- mybatis 合并 Java 代码 -->
+                    <dependency>
+                        <groupId>com.github.javaparser</groupId>
+                        <artifactId>javaparser-core</artifactId>
+                        <version>${javaparser.version}</version>
+                    </dependency>
+                    <!-- mybatis 插件 -->
+                    <dependency>
+                        <groupId>com.milo</groupId>
+                        <artifactId>base-mybatis-plugin</artifactId>
+                        <version>${base-mybatis-plugin.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
+
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>

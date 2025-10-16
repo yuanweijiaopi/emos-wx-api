@@ -1,6 +1,6 @@
 package com.example;
 
-import com.example.emos.wx.db.pojo.User;
+import com.example.emos.wx.entity.pojo.User;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;

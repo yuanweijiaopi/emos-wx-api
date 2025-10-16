@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <properties url="file:./src/main/resources/mybatis/config.properties" />
+
+    <context id="context" targetRuntime="MyBatis3" defaultModelType="flat">
+        <property name="javaFileEncoding" value="utf-8" />
+        <property name="createRepository"
+            value="true" />
+        <property name="repositoryPackage" value="${package.repository}" />
+        <property
+            name="mapperPackage" value="${basePackage}.${package.mapper}" />
+
+        <plugin
+            type="com.milo.mybatis.plugin.generator.LombokPlugin">
+            <property name="hasLombok" value="true" />
+        </plugin>
+
+        <plugin
+            type="com.milo.mybatis.plugin.generator.PageAndPlusPlugin" />
+
+        <plugin
+            type="com.milo.mybatis.plugin.generator.SwitchCodeGenPlugin">
+            <property name="genModel" value="true" />
+            <property name="genColumn" value="true" />
+            <property name="genExample" value="false" />
+            <property name="genMapper" value="true" />
+            <property name="genXml" value="true" />
+        </plugin>
+
+        <commentGenerator
+            type="com.milo.mybatis.plugin.generator.JztCommentGenerator">
+            <property name="suppressDate" value="true" />
+            <property name="suppressAllComments" value="false" />
+        </commentGenerator>
+
+        <jdbcConnection
+            driverClass="${jdbc.driver}"
+            connectionURL="${jdbc.url}" userId="${jdbc.username}"
+            password="${jdbc.password}" />
+
+        <javaTypeResolver
+            type="com.milo.mybatis.plugin.generator.TypeResolverPlugin">
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <javaModelGenerator
+            targetPackage="${basePackage}.${package.entity}"
+            targetProject="${targetProjectDir}">
+            <property name="enableSubPackages" value="false" />
+            <property name="trimStrings" value="false" />
+        </javaModelGenerator>
+
+        <sqlMapGenerator
+            targetPackage="mapper" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="false" />
+        </sqlMapGenerator>
+
+        <javaClientGenerator
+            type="XMLMAPPER" targetPackage="${basePackage}.${package.mapper}"
+            targetProject="${targetProjectDir}">
+            <property name="enableSubPackages" value="false" />
+        </javaClientGenerator>
+
+        <table tableName="tb_user" domainObjectName="TbUser"/>
+
+    </context>
+</generatorConfiguration>
