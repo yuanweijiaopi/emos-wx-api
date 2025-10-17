@@ -18,7 +18,7 @@ import javax.annotation.Resource;
  * @Version 1.0
  **/
 @RestController
-@RequestMapping("/TbUser")
+@RequestMapping("/tbUser")
 @Api(tags = "")
 public class TbUserEndpoint {
     @Resource

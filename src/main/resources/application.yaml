@@ -1,14 +1,3 @@
-## 应用服务 WEB 访问端口
-#server.port=8080
-#
-#
-##下面这些内容是为了让MyBatis映射
-##指定Mybatis的Mapper文件
-#mybatis.mapper-locations=classpath:mappers/*xml
-##指定Mybatis的实体目录
-#mybatis.type-aliases-package=com.seecen.emos.wx.mybatis.entity
-#
-
 server:
   tomcat:
     uri-encoding: UTF-8
@@ -70,28 +59,25 @@ spring:
     host: smtp.aliyun.com
     username: yangdi525@aliyun.com
     password: ax105105
-mybatis:
-  mapper-locations: classpath*:mapper/*.xml
-  type-aliases-package: com.example.emos.wx.db.pojo
+
+mybatis-plus:
   configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-    map-underscore-to-camel-case: true
+    cache-enabled: false #禁用二级缓存
+    local-cache-scope: statement
 
 
+# 日志级别
 logging:
   level:
-    base: debug
-    com.example.emos.wx.db.dao : warn
-  pattern:
-    console: "%d{HH:mm:ss}  %-5level  %msg%n"
+    base: info
+    # sql 日志
+    com.*.dao: debug
+    org.springframework.jdbc.core: info
 
 emos:
   jwt:
-    #密钥
     secret: abc123456
-    #令牌过期时间（天）
     expire: 5
-    #令牌缓存时间（天数）
     cache-expire: 10
 
 wx:
