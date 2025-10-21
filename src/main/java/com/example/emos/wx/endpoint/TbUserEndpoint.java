@@ -5,6 +5,7 @@ import com.example.emos.wx.comon.util.R;
 import com.example.emos.wx.service.UserService;
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,8 +27,18 @@ public class TbUserEndpoint {
 
     @GetMapping("havaRootUser")
     public Result<Boolean> haveRootUser(){
-        userService.haveRootUser();
+        return Result.succ(userService.haveRootUser());
+    }
+
+    @PostMapping("insert")
+    public Result userInsert(){
+        userService.userInsert();
         return Result.succ();
+    }
+
+    @GetMapping("getOpenId")
+    public String getOpenId(String code){
+        return userService.getOpenId(code);
     }
 
 

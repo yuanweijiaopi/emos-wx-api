@@ -4,16 +4,18 @@ import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.example.emos.wx.bean.request.LoginReq;
 import com.example.emos.wx.exception.EmosException;
-import com.example.gen.dao.TbUserMapper;
-import com.example.gen.po.TbUser;
-import com.example.gen.po.TbUserCol;
-import com.example.gen.repo.TbUserRepo;
-import com.example.gen.repo.impl.TbUserRepoImpl;
+import com.example.emos.wx.gen.dao.TbUserMapper;
+import com.example.emos.wx.gen.po.TbUser;
+import com.example.emos.wx.gen.po.TbUserCol;
+import com.example.emos.wx.gen.repo.TbUserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -32,12 +34,12 @@ public class UserService {
     @Value("${wx.app-secret}")
     private String appSecret;
 
-    @Autowired
+    @Resource
     private TbUserMapper tbUsermapper;
-    @Autowired
+    @Resource
     private TbUserRepo tbUserRepo;
 
-    private String getOpenId(String code) {
+    public String getOpenId(String code) {
         String url = "https://api.weixin.qq.com/sns/jscode2session";
         HashMap map = new HashMap();
         map.put("appid", appId);
@@ -86,8 +88,27 @@ public class UserService {
 
 
     public Boolean haveRootUser() {
-        TbUser one = tbUserRepo.getOne(new QueryWrapper<TbUser>().eq(TbUserCol.ROOT, 1));
-        return one != null;
+        Long count = tbUserRepo.count(
+                new QueryWrapper<TbUser>().eq("root", 1)
+        );
+        return count > 0;
     }
+
+    @Transactional(rollbackFor = Exception.class)
+    public void userInsert() {
+
+    }
+
+
+
+
+    public void login(LoginReq loginReq) {
+        String openId = getOpenId(loginReq.getCode());
+        Integer i = tbUserRepo.searchIdByOpenId(openId);
+        if (i == 0){
+            throw new EmosException("帐户不存在");
+        }
+    }
+
 
 }

@@ -1,4 +1,4 @@
-package com.example.gen.po;
+package com.example.emos.wx.gen.po;
 
 import lombok.Data;
 import io.swagger.annotations.ApiModelProperty;

@@ -1,13 +1,13 @@
-package com.example.gen.dao;
+package com.example.emos.wx.gen.dao;
 
-import com.example.gen.po.TbUser;
+import com.example.emos.wx.gen.po.TbUser;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.HashMap;
 
 @Mapper
-public interface TbUserMapper extends BaseMapper<com.example.gen.po.TbUser> {
+public interface TbUserMapper extends BaseMapper<TbUser> {
     boolean havaRootUser();
 
     int insert(HashMap param);
