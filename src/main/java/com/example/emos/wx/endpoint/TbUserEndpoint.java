@@ -1,7 +1,6 @@
 package com.example.emos.wx.endpoint;
 
 import com.example.emos.wx.bean.common.Result;
-import com.example.emos.wx.comon.util.R;
 import com.example.emos.wx.service.UserService;
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.GetMapping;

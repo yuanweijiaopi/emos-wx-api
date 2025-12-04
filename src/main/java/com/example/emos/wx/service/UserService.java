@@ -5,6 +5,7 @@ import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.emos.wx.bean.request.LoginReq;
+import com.example.emos.wx.config.shiro.JwtUtil;
 import com.example.emos.wx.exception.EmosException;
 import com.example.emos.wx.gen.dao.TbUserMapper;
 import com.example.emos.wx.gen.po.TbUser;
@@ -18,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Set;
 
 /**
  * @ClassName UserService
@@ -38,6 +40,8 @@ public class UserService {
     private TbUserMapper tbUsermapper;
     @Resource
     private TbUserRepo tbUserRepo;
+    @Autowired
+    private JwtUtil jwtUtil;
 
     public String getOpenId(String code) {
         String url = "https://api.weixin.qq.com/sns/jscode2session";
@@ -104,10 +108,14 @@ public class UserService {
 
     public void login(LoginReq loginReq) {
         String openId = getOpenId(loginReq.getCode());
-        Integer i = tbUserRepo.searchIdByOpenId(openId);
-        if (i == 0){
+        Integer id = tbUserRepo.searchIdByOpenId(openId);
+        if (id == 0){
             throw new EmosException("帐户不存在");
         }
+
+        String token = jwtUtil.createToken(id);
+        Set<String> permSet = tbUserRepo.searchUserPermission();
+
     }
 
 

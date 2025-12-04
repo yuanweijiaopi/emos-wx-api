@@ -56,4 +56,10 @@ public class JwtUtil {
         verifier.verify(token);
     }
 
+    public static void main(String[] args) {
+        System.out.println(DateUtil.offset(new Date(), DateField.DAY_OF_YEAR, 7));
+
+
+    }
+
 }

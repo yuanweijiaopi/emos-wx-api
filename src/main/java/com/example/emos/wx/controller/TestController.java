@@ -1,13 +1,11 @@
 package com.example.emos.wx.controller;
 
-import com.example.emos.wx.comon.util.R;
+import com.example.emos.wx.common.util.R;
 import com.example.emos.wx.controller.form.TestSayHelloForm;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import javax.annotation.Resource;
 
 /**
  * @ClassName TestController

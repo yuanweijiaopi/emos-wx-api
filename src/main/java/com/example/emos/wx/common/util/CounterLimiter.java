@@ -1,4 +1,4 @@
-package com.example.emos.wx.comon.util;
+package com.example.emos.wx.common.util;
 
 import java.util.concurrent.atomic.AtomicLong;
 
