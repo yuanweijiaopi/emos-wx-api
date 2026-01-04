@@ -1,7 +1,6 @@
 package com.example.emos.wx.common.statemachine;
 
 import com.example.emos.wx.exception.BizException;
-import com.example.emos.wx.exception.EmosException;
 import com.google.common.base.Joiner;
 import com.google.common.collect.Maps;
 

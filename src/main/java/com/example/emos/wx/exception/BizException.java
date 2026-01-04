@@ -1,10 +1,15 @@
 package com.example.emos.wx.exception;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * 业务异常
  *
  * @author Hollis
  */
+@Setter
+@Getter
 public class BizException extends RuntimeException {
 
     private ErrorCode errorCode;
@@ -34,11 +39,4 @@ public class BizException extends RuntimeException {
         this.errorCode = errorCode;
     }
 
-    public ErrorCode getErrorCode() {
-        return errorCode;
-    }
-
-    public void setErrorCode(ErrorCode errorCode) {
-        this.errorCode = errorCode;
-    }
 }
